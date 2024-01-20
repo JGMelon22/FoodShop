@@ -23,8 +23,8 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfiguration(new FoodConfiguration());
-        modelBuilder.ApplyConfiguration(new FoodConfiguration());
-        modelBuilder.ApplyConfiguration(new FoodConfiguration());
-        modelBuilder.ApplyConfiguration(new FoodConfiguration());
+        modelBuilder.ApplyConfiguration(new CategoryConfiguration());
+        modelBuilder.ApplyConfiguration(new TypicalPlaceConfiguration());
+        modelBuilder.ApplyConfiguration(new FoodTypicalPlaceConfiguration());
     }
 }
