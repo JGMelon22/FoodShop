@@ -30,6 +30,6 @@ public class FoodConfiguration : IEntityTypeConfiguration<Food>
         builder.Property(f => f.IsHealthy)
             .HasColumnType("BOOLEAN")
             .HasColumnName("is_healthy")
-            .HasDefaultValue("false");
+            .IsRequired();
     }
 }
