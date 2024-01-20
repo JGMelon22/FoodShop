@@ -1,5 +1,6 @@
 using FoodShop.Domain.Entities;
 using FoodShop.Infrastructure.Configuration;
+using FoodShop.Infrastructure.Configuration.Seeding;
 using Microsoft.EntityFrameworkCore;
 
 namespace FoodShop.Infrastructure.Data;
@@ -26,5 +27,7 @@ public class AppDbContext : DbContext
         modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         modelBuilder.ApplyConfiguration(new TypicalPlaceConfiguration());
         modelBuilder.ApplyConfiguration(new FoodTypicalPlaceConfiguration());
+
+        InitialSeeding.Seed(modelBuilder);
     }
 }
