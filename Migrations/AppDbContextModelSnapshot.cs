@@ -53,8 +53,8 @@ namespace FoodShop.Migrations
                         .HasColumnType("INT")
                         .HasColumnName("food_id");
 
-                    b.Property<bool>("IsHealthy")
-                        .HasColumnType("bool")
+                    b.Property<sbyte>("IsHealthy")
+                        .HasColumnType("TINYINT")
                         .HasColumnName("is_healthy");
 
                     b.Property<string>("Name")

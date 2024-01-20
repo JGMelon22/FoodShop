@@ -28,7 +28,7 @@ public class FoodConfiguration : IEntityTypeConfiguration<Food>
             .IsRequired();
 
         builder.Property(f => f.IsHealthy)
-            .HasColumnType("bool")
+            .HasColumnType("TINYINT")
             .HasColumnName("is_healthy")
             .IsRequired();
     }

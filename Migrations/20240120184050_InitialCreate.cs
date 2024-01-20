@@ -21,7 +21,7 @@ namespace FoodShop.Migrations
                     food_id = table.Column<int>(type: "INT", nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     food_name = table.Column<string>(type: "VARCHAR(100)", maxLength: 100, nullable: false),
-                    is_healthy = table.Column<bool>(type: "bool(1)", nullable: false)
+                    is_healthy = table.Column<sbyte>(type: "TINYINT", nullable: false)
                 },
                 constraints: table =>
                 {

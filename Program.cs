@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 // DbContext Service
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseMySQL(builder.Configuration.GetConnectionString("Default"));
+    options.UseMySQL(builder.Configuration.GetConnectionString("Default")!);
 });
 
 var app = builder.Build();

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FoodShop.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240120183350_InitialCreate")]
+    [Migration("20240120184050_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -56,8 +56,8 @@ namespace FoodShop.Migrations
                         .HasColumnType("INT")
                         .HasColumnName("food_id");
 
-                    b.Property<bool>("IsHealthy")
-                        .HasColumnType("bool")
+                    b.Property<sbyte>("IsHealthy")
+                        .HasColumnType("TINYINT")
                         .HasColumnName("is_healthy");
 
                     b.Property<string>("Name")
