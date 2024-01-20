@@ -1,4 +1,6 @@
 using FoodShop.Infrastructure.Data;
+using FoodShop.Infrastructure.Repositories;
+using FoodShop.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseMySQL(builder.Configuration.GetConnectionString("Default")!);
 });
+
+// Interfaces and Repositories
+builder.Services.AddScoped<ITypicalPlaceRepository, TypicalPlaceRepository>();
 
 var app = builder.Build();
 
