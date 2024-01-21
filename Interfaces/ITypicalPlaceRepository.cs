@@ -1,4 +1,3 @@
-using FoodShop.Domain.Entities;
 using FoodShop.DTOs.TypicalPlace;
 
 namespace FoodShop.Interfaces;

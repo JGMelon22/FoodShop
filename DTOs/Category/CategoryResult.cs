@@ -1,5 +1,3 @@
-using FoodShop.Domain.Entities;
-
 namespace FoodShop.DTOs.Category;
 
 public record CategoryResult

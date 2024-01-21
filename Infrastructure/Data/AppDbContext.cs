@@ -1,7 +1,5 @@
-using FoodShop.Domain.Entities;
 using FoodShop.Infrastructure.Configuration;
 using FoodShop.Infrastructure.Configuration.Seeding;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodShop.Infrastructure.Data;
 

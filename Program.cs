@@ -1,7 +1,5 @@
-using FoodShop.Infrastructure.Data;
 using FoodShop.Infrastructure.Repositories;
 using FoodShop.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

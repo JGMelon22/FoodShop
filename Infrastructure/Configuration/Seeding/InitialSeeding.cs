@@ -1,6 +1,4 @@
 using Bogus;
-using FoodShop.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodShop.Infrastructure.Configuration.Seeding;
 

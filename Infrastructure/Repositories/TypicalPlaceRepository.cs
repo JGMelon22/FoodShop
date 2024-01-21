@@ -1,8 +1,5 @@
-using FoodShop.Domain.Entities;
 using FoodShop.DTOs.TypicalPlace;
-using FoodShop.Infrastructure.Data;
 using FoodShop.Interfaces;
-using Microsoft.EntityFrameworkCore;
 
 namespace FoodShop.Infrastructure.Repositories;
 
