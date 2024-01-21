@@ -29,7 +29,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetAllTypicalPlacesAsync(int id)
+    public async Task<IActionResult> GetTypicalPlaceByIdAsync(int id)
     {
         var typicalPlace = await repository.GetTypicalPlaceByIdAsync(id);
         return typicalPlace.Data is not null
