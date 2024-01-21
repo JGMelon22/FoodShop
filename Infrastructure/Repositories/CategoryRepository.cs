@@ -45,9 +45,9 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
         try
         {
             var categories = await dbContext.Categories
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception($"Categories list is empty!");
+                                 .AsNoTracking()
+                                 .ToListAsync()
+                             ?? throw new Exception("Categories list is empty!");
 
             var categoriesMapped = new List<CategoryResult>();
 
@@ -81,7 +81,7 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
         try
         {
             var category = await dbContext.Categories.FindAsync(id)
-                ?? throw new Exception($"Category with id {id} not found!");
+                           ?? throw new Exception($"Category with id {id} not found!");
 
             var categoryResult = new CategoryResult
             {
@@ -113,7 +113,7 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
         try
         {
             var category = await dbContext.Categories.FindAsync(id)
-                ?? throw new Exception($"Category with id {id} not found!");
+                           ?? throw new Exception($"Category with id {id} not found!");
 
             category.Name = updatedCategory.Name;
             category.FoodId = updatedCategory.FoodId;
@@ -124,7 +124,7 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
             {
                 Id = category.Id,
                 Name = category.Name,
-                FoodId = category.FoodId,
+                FoodId = category.FoodId
             };
 
             serviceResponse.Data = categoryResult;

@@ -61,7 +61,6 @@ public class TypicalPlaceRepository(AppDbContext dbContext) : ITypicalPlaceRepos
             }
 
             serviceResponse.Data = typicalPlacesMapped;
-
         }
 
         catch (Exception ex)
@@ -122,7 +121,8 @@ public class TypicalPlaceRepository(AppDbContext dbContext) : ITypicalPlaceRepos
         return serviceResponse;
     }
 
-    public async Task<ServiceResponse<TypicalPlaceResult>> UpdateTypicalPlaceAsync(int id, TypicalPlaceInput updatedTypicalPlace)
+    public async Task<ServiceResponse<TypicalPlaceResult>> UpdateTypicalPlaceAsync(int id,
+        TypicalPlaceInput updatedTypicalPlace)
     {
         var serviceResponse = new ServiceResponse<TypicalPlaceResult>();
 

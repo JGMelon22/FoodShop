@@ -9,5 +9,4 @@ public interface ITypicalPlaceRepository
     Task<ServiceResponse<TypicalPlaceResult>> AddTypicalPlaceAsync(TypicalPlaceInput newTypicalPlace);
     Task<ServiceResponse<TypicalPlaceResult>> UpdateTypicalPlaceAsync(int id, TypicalPlaceInput updatedTypicalPlace);
     Task<ServiceResponse<bool>> RemoveTypicalPlacesAsync(int id);
-
 }
