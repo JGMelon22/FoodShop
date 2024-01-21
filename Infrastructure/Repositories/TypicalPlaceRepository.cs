@@ -69,7 +69,8 @@ public class TypicalPlaceRepository(AppDbContext dbContext) : ITypicalPlaceRepos
 
         catch (Exception ex)
         {
-
+            serviceResponse.Message = ex.Message;
+            serviceResponse.Success = false;
         }
 
         return serviceResponse;
