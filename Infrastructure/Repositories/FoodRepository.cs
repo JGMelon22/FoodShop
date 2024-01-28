@@ -14,9 +14,10 @@ public class FoodRepository(AppDbContext dbContext) : IFoodRepository
             var food = new Food
             {
                 Name = newFood.Name,
-                IsHealthy = newFood.IsHealthy
+                IsHealthy = newFood.IsHealthy   
             };
 
+            await dbContext.Foods.AddAsync(food);
             await dbContext.SaveChangesAsync();
 
             var foodResult = new FoodResult
