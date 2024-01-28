@@ -7,7 +7,7 @@ public record FoodInput(
     [Required(ErrorMessage = "Food Name must be informed!")]
     [MinLength(2, ErrorMessage = "Food Name must be greater than 2 characters!")]
     [MaxLength(100, ErrorMessage = "Food Name can not exceed 100 characters!")]
-    string FoodName,
+    string Name,
 
     [Required(ErrorMessage = "Is Healthy status must be informed!")]
     // [AllowedValues(1, 0)]

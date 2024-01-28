@@ -80,8 +80,9 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
 
         try
         {
-            var category = await dbContext.Categories.FindAsync(id)
-                           ?? throw new Exception($"Category with id {id} not found!");
+            var category = await dbContext.Categories
+                .FindAsync(id)
+                ?? throw new Exception($"Category with id {id} not found!");
 
             var categoryResult = new CategoryResult
             {
@@ -101,9 +102,27 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
         return serviceResponse;
     }
 
-    public Task<ServiceResponse<bool>> RemoveCategoryAsync(int id)
+    public async Task<ServiceResponse<bool>> RemoveCategoryAsync(int id)
     {
-        throw new NotImplementedException();
+        var serviceResponse = new ServiceResponse<bool>();
+
+        try
+        {
+            var category = await dbContext.Categories.FindAsync(id) 
+                          ?? throw new Exception($"Category with id {id} not found!");
+
+            dbContext.Categories.Remove(category);
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        catch (Exception ex)
+        {
+            serviceResponse.Message = ex.Message;
+            serviceResponse.Success = false;
+        }
+
+        return serviceResponse;
     }
 
     public async Task<ServiceResponse<CategoryResult>> UpdateCategoryAsync(int id, CategoryInput updatedCategory)
