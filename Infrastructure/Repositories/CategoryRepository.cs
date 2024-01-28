@@ -18,6 +18,7 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
                 FoodId = newCategory.FoodId
             };
 
+            await dbContext.Categories.AddAsync(category);
             await dbContext.SaveChangesAsync();
 
             var categoryResult = new CategoryResult

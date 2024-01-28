@@ -17,6 +17,7 @@ public class TypicalPlaceRepository(AppDbContext dbContext) : ITypicalPlaceRepos
                 Country = newTypicalPlace.Country
             };
 
+            await dbContext.TypicalPlaces.AddAsync(typicalPlace);
             await dbContext.SaveChangesAsync();
 
             var typicalPlaceResult = new TypicalPlaceResult
