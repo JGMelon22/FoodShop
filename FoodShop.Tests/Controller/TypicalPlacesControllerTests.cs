@@ -1,4 +1,3 @@
-using FluentAssertions.Common;
 using FoodShop.Controllers;
 using FoodShop.Domain.Entities;
 using FoodShop.DTOs.TypicalPlace;
@@ -9,8 +8,8 @@ namespace FoodShop.Tests.Controller;
 
 public class TypicalPlacesControllerTests
 {
-    private readonly TypicalPlacesController _typicalPlacesController;
     private readonly ITypicalPlaceRepository _typicalPlaceRepository;
+    private readonly TypicalPlacesController _typicalPlacesController;
 
     public TypicalPlacesControllerTests()
     {
@@ -39,7 +38,7 @@ public class TypicalPlacesControllerTests
     public void TypicalPlacesController_GetTypicalPlaceByIdAsync_ReturnsTypicalPlace()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var typicalPlace = A.Fake<ServiceResponse<TypicalPlaceResult>>();
         A.CallTo(() => _typicalPlaceRepository.GetTypicalPlaceByIdAsync(id)).Returns(typicalPlace);
 
@@ -71,7 +70,7 @@ public class TypicalPlacesControllerTests
     public void TypicalPlacesController_UpdateTypicalPlace_ReturnsTypicalPlace()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var updatedTypicalPlace = A.Fake<TypicalPlaceInput>();
         var typicalPlaceResult = A.Fake<ServiceResponse<TypicalPlaceResult>>();
         A.CallTo(() => _typicalPlaceRepository.UpdateTypicalPlaceAsync(id, updatedTypicalPlace))
@@ -89,7 +88,7 @@ public class TypicalPlacesControllerTests
     public void TypicalPlacesController_RemoveTypicalPlace_ReturnsSuccess()
     {
         // Arrange
-        int id = 1;
+        var id = 1;
         var success = A.Fake<ServiceResponse<bool>>();
         A.CallTo(() => _typicalPlaceRepository.RemoveTypicalPlacesAsync(id)).Returns(success);
 
