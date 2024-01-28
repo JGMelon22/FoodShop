@@ -12,7 +12,7 @@ public class CategoriesController(ICategoryRepository repository) : ControllerBa
     public async Task<IActionResult> AddCategoryAsync(CategoryInput newCategory)
     {
         var category = await repository.AddCategoryAsync(newCategory);
-        return category.Data is not null
+        return category.Data != null
             ? Ok(category)
             : BadRequest(category);
     }
@@ -21,7 +21,7 @@ public class CategoriesController(ICategoryRepository repository) : ControllerBa
     public async Task<IActionResult> GetAllCategoriesAsync()
     {
         var categories = await repository.GetAllCategoriesAsync();
-        return categories.Data is not null
+        return categories.Data != null
             ? Ok(categories)
             : NoContent();
     }
@@ -30,7 +30,7 @@ public class CategoriesController(ICategoryRepository repository) : ControllerBa
     public async Task<IActionResult> GetCategoryByIdAsync(int id)
     {
         var categories = await repository.GetCategoryByIdAsync(id);
-        return categories.Data is not null
+        return categories.Data != null
             ? Ok(categories)
             : NoContent();
     }
@@ -39,7 +39,7 @@ public class CategoriesController(ICategoryRepository repository) : ControllerBa
     public async Task<IActionResult> RemoveCategoryAsync(int id)
     {
         var category = await repository.RemoveCategoryAsync(id);
-        return category.Success is not false
+        return category.Success != false
             ? NoContent()
             : NotFound(category);
     }
@@ -48,7 +48,7 @@ public class CategoriesController(ICategoryRepository repository) : ControllerBa
     public async Task<IActionResult> UpdateCategoryAsync(int id, CategoryInput updatedCategory)
     {
         var category = await repository.UpdateCategoryAsync(id, updatedCategory);
-        return category.Data is not null
+        return category.Data != null
             ? Ok(category)
             : BadRequest(category);
     }

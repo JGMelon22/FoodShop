@@ -14,7 +14,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     public async Task<IActionResult> AddTypicalPlaceAsync(TypicalPlaceInput newTypicalPlace)
     {
         var typicalPlace = await repository.AddTypicalPlaceAsync(newTypicalPlace);
-        return typicalPlace.Data is not null
+        return typicalPlace.Data != null
             ? Ok(typicalPlace)
             : BadRequest(typicalPlace);
     }
@@ -23,7 +23,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     public async Task<IActionResult> GetAllTypicalPlacesAsync()
     {
         var typicalPlaces = await repository.GetAllTypicalPlacesAsync();
-        return typicalPlaces.Data is not null
+        return typicalPlaces.Data != null
             ? Ok(typicalPlaces)
             : NoContent();
     }
@@ -32,7 +32,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     public async Task<IActionResult> GetTypicalPlaceByIdAsync(int id)
     {
         var typicalPlace = await repository.GetTypicalPlaceByIdAsync(id);
-        return typicalPlace.Data is not null
+        return typicalPlace.Data != null
             ? Ok(typicalPlace)
             : NotFound(typicalPlace);
     }
@@ -41,7 +41,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     public async Task<IActionResult> RemoveTypicalPlaceAsync(int id)
     {
         var typicalPlace = await repository.RemoveTypicalPlacesAsync(id);
-        return typicalPlace.Success is not false
+        return typicalPlace.Success != false
             ? NoContent()
             : NotFound(typicalPlace);
     }
@@ -50,7 +50,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     public async Task<IActionResult> UpdateTypicalPlaceAsync(int id, TypicalPlaceInput updatedTypicalPlace)
     {
         var typicalPlace = await repository.UpdateTypicalPlaceAsync(id, updatedTypicalPlace);
-        return typicalPlace.Data is not null
+        return typicalPlace.Data != null
             ? Ok(typicalPlace)
             : BadRequest(typicalPlace);
     }
