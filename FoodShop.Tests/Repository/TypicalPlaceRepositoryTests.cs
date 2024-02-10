@@ -18,9 +18,10 @@ public class TypicalPlaceRepositoryTests
             .Options;
 
         _dbContext = new AppDbContext(options);
-        _dbContext.Database.EnsureCreatedAsync(); // AQUI
+        _dbContext.Database.EnsureCreated();
+        _typicalPlaceRepository = new TypicalPlaceRepository(_dbContext);
 
-        if (_dbContext.TypicalPlaces.Count() <= 0)
+        if (_dbContext.TypicalPlaces.Count() == 0)
         {
             for (var i = 0; i < 10; i++)
             {
@@ -33,8 +34,6 @@ public class TypicalPlaceRepositoryTests
 
                 _dbContext.SaveChanges();
             }
-
-            _typicalPlaceRepository = new TypicalPlaceRepository(_dbContext);
         }
     }
 
