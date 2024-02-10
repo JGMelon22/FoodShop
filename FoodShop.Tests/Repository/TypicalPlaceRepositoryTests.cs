@@ -68,7 +68,7 @@ public class TypicalPlaceRepositoryTests
     public void TypicalPlaceRepository_GetTypicalPlaceById_ReturnsTypicalPlace()
     {
         // Arrange
-        var id = 1;
+        int id = 1;
 
         // Act
         var result = _typicalPlaceRepository.GetTypicalPlaceByIdAsync(id);
