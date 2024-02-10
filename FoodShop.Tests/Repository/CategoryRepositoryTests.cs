@@ -42,10 +42,10 @@ public class CategoryRepositoryTests
     public void CategoryRepository_AddCategory_ReturnsCategory()
     {
         // Arrange
-        var category = new CategoryInput("New Category", 2);
+        var newCategory = new CategoryInput("New Category", 1);
 
         // Act
-        var result =  _categoryRepository.AddCategoryAsync(category);
+        var result =  _categoryRepository.AddCategoryAsync(newCategory);
 
         // Assert
         result.Should().NotBeNull();
@@ -84,7 +84,7 @@ public class CategoryRepositoryTests
     {
         // Arrange
         int id = 1;
-        var updatedCategory = A.Fake<CategoryInput>();
+        var updatedCategory = new CategoryInput("Updated Category", 1);
 
         // Act 
         var result =  _categoryRepository.UpdateCategoryAsync(id, updatedCategory);

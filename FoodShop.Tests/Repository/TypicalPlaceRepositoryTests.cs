@@ -41,10 +41,10 @@ public class TypicalPlaceRepositoryTests
     public void TypicalPlaceRepository_AddTypicalPlace_ReturnsTypicalPlace()
     {
         // Arrange
-        var typicalPlaceInput = new TypicalPlaceInput("New Typical Place");
+        var newTypicalPlace = new TypicalPlaceInput("New Typical Place");
 
         // Act
-        var result = _typicalPlaceRepository.AddTypicalPlaceAsync(typicalPlaceInput);
+        var result = _typicalPlaceRepository.AddTypicalPlaceAsync(newTypicalPlace);
 
         // Assert
         result.Should().NotBeNull();
@@ -82,8 +82,8 @@ public class TypicalPlaceRepositoryTests
     public void TypicalPlaceRepository_UpdateTypicalPlace_ReturnsTypicalPlace()
     {
         // Arrange
-        var id = 1;
-        var updatedTypicalPlace = A.Fake<TypicalPlaceInput>();
+        int id = 1;
+        var updatedTypicalPlace = new TypicalPlaceInput("Updated Country");
 
         // Act
         var result = _typicalPlaceRepository.UpdateTypicalPlaceAsync(id, updatedTypicalPlace);
