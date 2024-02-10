@@ -8,7 +8,6 @@ namespace FoodShop.Tests.Repository;
 
 public class CategoryRepositoryTests
 {
-    private readonly AppDbContext _dbContext;
     private readonly CategoryRepository _categoryRepository;
 
     public CategoryRepositoryTests()
@@ -17,24 +16,24 @@ public class CategoryRepositoryTests
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
 
-        _dbContext = new AppDbContext(options);
-        _dbContext.Database.EnsureCreated();
-        _categoryRepository = new CategoryRepository(_dbContext);
+        var dbContext = new AppDbContext(options);
+        dbContext.Database.EnsureCreated();
+        _categoryRepository = new CategoryRepository(dbContext);
 
-        if (_dbContext.Categories.Any())
+        if (dbContext.Categories.Count() == 0)
         {
             for (int i = 0; i < 10; i++)
             {
-                _dbContext.Categories.Add(
+                dbContext.Categories.Add(
                     new Category
                     {
                         Name = "Test Category",
                         FoodId = i
                     }
                 );
-
-                _dbContext.SaveChanges();
             }
+
+            dbContext.SaveChanges();
         }
     }
 
@@ -45,7 +44,7 @@ public class CategoryRepositoryTests
         var newCategory = new CategoryInput("New Category", 1);
 
         // Act
-        var result =  _categoryRepository.AddCategoryAsync(newCategory);
+        var result = _categoryRepository.AddCategoryAsync(newCategory);
 
         // Assert
         result.Should().NotBeNull();
@@ -58,7 +57,7 @@ public class CategoryRepositoryTests
         // Arrange
 
         // Act
-        var result =  _categoryRepository.GetAllCategoriesAsync();
+        var result = _categoryRepository.GetAllCategoriesAsync();
 
         // Assert
         result.Should().NotBeNull();
@@ -72,7 +71,7 @@ public class CategoryRepositoryTests
         int id = 1;
 
         // Act
-        var result =  _categoryRepository.GetCategoryByIdAsync(id);
+        var result = _categoryRepository.GetCategoryByIdAsync(id);
 
         // Assert
         result.Should().NotBeNull();
@@ -87,7 +86,7 @@ public class CategoryRepositoryTests
         var updatedCategory = new CategoryInput("Updated Category", 1);
 
         // Act 
-        var result =  _categoryRepository.UpdateCategoryAsync(id, updatedCategory);
+        var result = _categoryRepository.UpdateCategoryAsync(id, updatedCategory);
 
         // Assert
         result.Should().NotBeNull();
@@ -101,7 +100,7 @@ public class CategoryRepositoryTests
         int id = 1;
 
         // Act
-        var result =  _categoryRepository.RemoveCategoryAsync(id);
+        var result = _categoryRepository.RemoveCategoryAsync(id);
 
         // Assert
         result.Should().NotBeNull();

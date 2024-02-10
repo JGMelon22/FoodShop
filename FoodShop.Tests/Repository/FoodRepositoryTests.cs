@@ -8,7 +8,6 @@ namespace FoodShop.Tests.Repository;
 
 public class FoodRepositoryTests
 {
-    // private readonly AppDbContext _dbContext;
     private readonly FoodRepository _foodRepository;
 
     public FoodRepositoryTests()
@@ -21,7 +20,7 @@ public class FoodRepositoryTests
         dbContext.Database.EnsureCreated();
         _foodRepository = new FoodRepository(dbContext);
 
-        if (dbContext.Foods.Any())
+        if (dbContext.Foods.Count() == 0)
         {
             for (int i = 0; i < 10; i++)
             {
@@ -38,7 +37,7 @@ public class FoodRepositoryTests
     }
 
     [Fact]
-    public void FoodRepository_AddFood_ReturnsFood()
+    public void FoodRepository_AddFoodAsync_ReturnsFood()
     {
         // Arrange
         var newFood = new FoodInput("New Food", true);
@@ -49,5 +48,61 @@ public class FoodRepositoryTests
         // Assert
         result.Should().NotBeNull();
         result.Should().BeOfType<Task<ServiceResponse<FoodResult>>>();
+    }
+
+    [Fact]
+    public void FoodRepository_GetAllFoodsAsync_ReturnsFoods()
+    {
+        // Arrange
+
+        // Act
+        var result = _foodRepository.GetAllFoodsAsync();
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().BeOfType<Task<ServiceResponse<List<FoodResult>>>>();
+    }
+
+    [Fact]
+    public void FoodRepository_GetFoodByIdAsync_ReturnsFood()
+    {
+        // Arrange
+        int id = 1;
+
+        // Act 
+        var result = _foodRepository.GetFoodByIdAsync(id);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().BeOfType<Task<ServiceResponse<FoodResult>>>();
+    }
+
+    [Fact]
+    public void FoodRepository_UpdateFoodAsync_ReturnsFood()
+    {
+        // Arrange
+        int id = 1;
+        var updatedFood = new FoodInput("New Food", false);
+
+        // Act
+        var result = _foodRepository.UpdateFoodAsync(id, updatedFood);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().BeOfType<Task<ServiceResponse<FoodResult>>>();
+    }
+
+    [Fact]
+    public void FoodRepository_RemoveFoodAsync_ReturnsFood()
+    {
+        // Arrange
+        int id = 1;
+
+        // Act
+        var result = _foodRepository.RemoveFoodAsync(id);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().BeOfType<Task<ServiceResponse<bool>>>();
     }
 }

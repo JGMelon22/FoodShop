@@ -8,7 +8,6 @@ namespace FoodShop.Tests.Repository;
 
 public class TypicalPlaceRepositoryTests
 {
-    private readonly AppDbContext _dbContext;
     private readonly TypicalPlaceRepository _typicalPlaceRepository;
 
     public TypicalPlaceRepositoryTests()
@@ -17,23 +16,23 @@ public class TypicalPlaceRepositoryTests
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
 
-        _dbContext = new AppDbContext(options);
-        _dbContext.Database.EnsureCreated();
-        _typicalPlaceRepository = new TypicalPlaceRepository(_dbContext);
+        var dbContext = new AppDbContext(options);
+        dbContext.Database.EnsureCreated();
+        _typicalPlaceRepository = new TypicalPlaceRepository(dbContext);
 
-        if (_dbContext.TypicalPlaces.Count() == 0)
+        if (dbContext.TypicalPlaces.Count() == 0)
         {
             for (var i = 0; i < 10; i++)
             {
-                _dbContext.TypicalPlaces.Add(
+                dbContext.TypicalPlaces.Add(
                     new TypicalPlace
                     {
                         Country = "Test Country"
                     }
                 );
-
-                _dbContext.SaveChanges();
             }
+            
+            dbContext.SaveChanges();
         }
     }
 
