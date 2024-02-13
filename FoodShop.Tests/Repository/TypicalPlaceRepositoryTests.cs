@@ -37,7 +37,7 @@ public class TypicalPlaceRepositoryTests
     }
 
     [Fact]
-    public void TypicalPlaceRepository_AddTypicalPlace_ReturnsTypicalPlace()
+    public void TypicalPlaceRepository_AddTypicalPlaceAsync_ReturnsTypicalPlace()
     {
         // Arrange
         var newTypicalPlace = new TypicalPlaceInput("New Typical Place");
@@ -51,7 +51,7 @@ public class TypicalPlaceRepositoryTests
     }
 
     [Fact]
-    public void TypicalPlaceRepository_GetAllTypicalPlaces_ReturnsTypicalPlaces()
+    public void TypicalPlaceRepository_GetAllTypicalPlacesAsync_ReturnsTypicalPlaces()
     {
         // Arrange
 
@@ -64,7 +64,7 @@ public class TypicalPlaceRepositoryTests
     }
 
     [Fact]
-    public void TypicalPlaceRepository_GetTypicalPlaceById_ReturnsTypicalPlace()
+    public void TypicalPlaceRepository_GetTypicalPlaceByIdAsync_ReturnsTypicalPlace()
     {
         // Arrange
         int id = 1;
@@ -78,7 +78,7 @@ public class TypicalPlaceRepositoryTests
     }
 
     [Fact]
-    public void TypicalPlaceRepository_UpdateTypicalPlace_ReturnsTypicalPlace()
+    public void TypicalPlaceRepository_UpdateTypicalPlaceAsync_ReturnsTypicalPlace()
     {
         // Arrange
         int id = 1;
@@ -92,7 +92,7 @@ public class TypicalPlaceRepositoryTests
     }
 
     [Fact]
-    public void TypicalPlaceRepository_RemoveTypicalPlace_ReturnsSuccess()
+    public void TypicalPlaceRepository_RemoveTypicalPlaceAsync_ReturnsSuccess()
     {
         // Arrange
         var id = 1;

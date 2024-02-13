@@ -38,7 +38,7 @@ public class CategoryRepositoryTests
     }
 
     [Fact]
-    public void CategoryRepository_AddCategory_ReturnsCategory()
+    public void CategoryRepository_AddCategoryAsync_ReturnsCategory()
     {
         // Arrange
         var newCategory = new CategoryInput("New Category", 1);
@@ -52,7 +52,7 @@ public class CategoryRepositoryTests
     }
 
     [Fact]
-    public void CategoryRepository_GetAllCategories_ReturnsCategories()
+    public void CategoryRepository_GetAllCategoriesAsync_ReturnsCategories()
     {
         // Arrange
 
@@ -79,7 +79,7 @@ public class CategoryRepositoryTests
     }
 
     [Fact]
-    public void CategoryRepository_UpdateCategory_ReturnsCategory()
+    public void CategoryRepository_UpdateCategoryAsync_ReturnsCategory()
     {
         // Arrange
         int id = 1;
@@ -94,7 +94,7 @@ public class CategoryRepositoryTests
     }
 
     [Fact]
-    public void CategoryRepository_RemoveCategory_ReturnsSuccess()
+    public void CategoryRepository_RemoveCategoryAsync_ReturnsSuccess()
     {
         // Arrange
         int id = 1;

@@ -67,7 +67,7 @@ public class TypicalPlacesControllerTests
     }
 
     [Fact]
-    public void TypicalPlacesController_UpdateTypicalPlace_ReturnsTypicalPlace()
+    public void TypicalPlacesController_UpdateTypicalPlaceAsync_ReturnsTypicalPlace()
     {
         // Arrange
         var id = 1;
