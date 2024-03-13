@@ -1,4 +1,5 @@
 using FoodShop.DTOs.Food;
+using FoodShop.Infrastructure.Mappling;
 using FoodShop.Interfaces;
 
 namespace FoodShop.Infrastructure.Repositories;
@@ -11,21 +12,13 @@ public class FoodRepository(AppDbContext dbContext) : IFoodRepository
 
         try
         {
-            var food = new Food
-            {
-                Name = newFood.Name,
-                IsHealthy = newFood.IsHealthy   
-            };
-
+            var mapper = new FoodMapper();
+            var food = mapper.FoodToFoodInputDto(newFood);
+            
             await dbContext.Foods.AddAsync(food);
             await dbContext.SaveChangesAsync();
 
-            var foodResult = new FoodResult
-            {
-                Id = food.Id,
-                Name = food.Name,
-                IsHealthy = food.IsHealthy
-            };
+            var foodResult = mapper.FoodToFoodResultDto(food);
 
             serviceResponse.Data = foodResult;
         }
@@ -46,26 +39,16 @@ public class FoodRepository(AppDbContext dbContext) : IFoodRepository
         try
         {
             var foods = await dbContext.Foods
-                .AsNoTracking()
-                .ToListAsync()
-                ?? throw new Exception("Foods list is empty!");
+                            .AsNoTracking()
+                            .ToListAsync()
+                        ?? throw new Exception("Foods list is empty!");
 
+            //
+            var mapper = new FoodMapper();
+            var foodResults = foods.Select(x => mapper.FoodToFoodResultDto(x)).ToList();
+            //
 
-            var foodsMapped = new List<FoodResult>();
-
-            foreach (var food in foods)
-            {
-                var foodResult = new FoodResult
-                {
-                    Id = food.Id,
-                    Name = food.Name,
-                    IsHealthy = food.IsHealthy
-                };
-
-                foodsMapped.Add(foodResult);
-            }
-
-            serviceResponse.Data = foodsMapped;
+            serviceResponse.Data = foodResults;
         }
 
 
@@ -87,12 +70,8 @@ public class FoodRepository(AppDbContext dbContext) : IFoodRepository
             var food = await dbContext.Foods.FindAsync(id)
                        ?? throw new Exception($"Food with id {id} not found!");
 
-            var foodResult = new FoodResult
-            {
-                Id = food.Id,
-                Name = food.Name,
-                IsHealthy = food.IsHealthy
-            };
+            var mapper = new FoodMapper();
+            var foodResult = mapper.FoodToFoodResultDto(food);
 
             serviceResponse.Data = foodResult;
         }
@@ -112,12 +91,12 @@ public class FoodRepository(AppDbContext dbContext) : IFoodRepository
 
         try
         {
-            var food = await dbContext.Foods.FindAsync(id) 
+            var food = await dbContext.Foods.FindAsync(id)
                        ?? throw new Exception($"Food with id {id} not found!");
 
             dbContext.Foods.Remove(food);
         }
-        
+
         catch (Exception ex)
         {
             serviceResponse.Message = ex.Message;
@@ -135,17 +114,14 @@ public class FoodRepository(AppDbContext dbContext) : IFoodRepository
         {
             var food = await dbContext.Foods.FindAsync(id)
                        ?? throw new Exception($"Food with id {id} not found!");
-
+            
             food.Name = updatedFood.Name;
             food.IsHealthy = updatedFood.IsHealthy;
 
             await dbContext.SaveChangesAsync();
 
-            var foodResult = new FoodResult
-            {
-                Name = food.Name,
-                IsHealthy = food.IsHealthy
-            };
+            var mapper = new FoodMapper();
+            var foodResult = mapper.FoodToFoodResultDto(food);
 
             serviceResponse.Data = foodResult;
         }

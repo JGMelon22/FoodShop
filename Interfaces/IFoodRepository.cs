@@ -9,5 +9,4 @@ public interface IFoodRepository
     Task<ServiceResponse<FoodResult>> AddFoodAsync(FoodInput newFood);
     Task<ServiceResponse<FoodResult>> UpdateFoodAsync(int id, FoodInput updatedFood);
     Task<ServiceResponse<bool>> RemoveFoodAsync(int id);
-
 }

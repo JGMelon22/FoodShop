@@ -82,8 +82,8 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
         try
         {
             var category = await dbContext.Categories
-                .FindAsync(id)
-                ?? throw new Exception($"Category with id {id} not found!");
+                               .FindAsync(id)
+                           ?? throw new Exception($"Category with id {id} not found!");
 
             var categoryResult = new CategoryResult
             {
@@ -109,8 +109,8 @@ public class CategoryRepository(AppDbContext dbContext) : ICategoryRepository
 
         try
         {
-            var category = await dbContext.Categories.FindAsync(id) 
-                          ?? throw new Exception($"Category with id {id} not found!");
+            var category = await dbContext.Categories.FindAsync(id)
+                           ?? throw new Exception($"Category with id {id} not found!");
 
             dbContext.Categories.Remove(category);
 

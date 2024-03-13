@@ -41,7 +41,7 @@ public class TypicalPlacesController(ITypicalPlaceRepository repository) : Contr
     public async Task<IActionResult> RemoveTypicalPlaceAsync(int id)
     {
         var typicalPlace = await repository.RemoveTypicalPlacesAsync(id);
-        return typicalPlace.Success != false
+        return typicalPlace.Success
             ? NoContent()
             : NotFound(typicalPlace);
     }

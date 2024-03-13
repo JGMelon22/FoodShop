@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace FoodShop.Infrastructure;
+namespace FoodShop.Infrastructure.Configuration;
 
 public class FoodTypicalPlaceConfiguration : IEntityTypeConfiguration<FoodTypicalPlace>
 {

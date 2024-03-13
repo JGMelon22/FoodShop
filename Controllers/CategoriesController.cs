@@ -39,7 +39,7 @@ public class CategoriesController(ICategoryRepository repository) : ControllerBa
     public async Task<IActionResult> RemoveCategoryAsync(int id)
     {
         var category = await repository.RemoveCategoryAsync(id);
-        return category.Success != false
+        return category.Success
             ? NoContent()
             : NotFound(category);
     }

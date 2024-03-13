@@ -8,7 +8,6 @@ namespace FoodShop.Controllers;
 [Route("api/[controller]")]
 public class FoodsController(IFoodRepository repository) : ControllerBase
 {
-
     [HttpPost]
     public async Task<IActionResult> AddFoodAsync(FoodInput newFood)
     {
@@ -40,7 +39,7 @@ public class FoodsController(IFoodRepository repository) : ControllerBase
     public async Task<IActionResult> RemoveFoodAsync(int id)
     {
         var food = await repository.RemoveFoodAsync(id);
-        return food.Success != false
+        return food.Success
             ? NoContent()
             : BadRequest(food);
     }

@@ -1,4 +1,5 @@
 # Foods Shop
+
 Yet another weekend side project. Create, Read, Update and Delete food data from MySQL using EFCore.
 
 <h2> Used Tools </h2>
@@ -23,7 +24,7 @@ Top-level Package <br/>
 > Microsoft.EntityFrameworkCore.InMemory <br/>
 > Microsoft.NET.Test.Sdk <br/>
 > xunit <br/>
-> xunit.runner.visualstudio <br/>                  
+> xunit.runner.visualstudio <br/>
 
 <div style="display: inline_block" class="flex-container"><br>
         <img align="center" alt="CSharp" height="5%" width="5%" <img
